@@ -1,0 +1,24 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+
+# Environments
+venv/
+env/
+.env
+
+# Python junk
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large AI Artifacts (Tell users to run train.py to get these)
+data/u.data
+data/*.pth
+data/*.bin
+data/*.pkl
+
+# Notebooks junk
+.ipynb_checkpoints/
+
+# OS junk
+.DS_Store
+Thumbs.db
