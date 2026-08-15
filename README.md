@@ -34,7 +34,7 @@ Candidates are passed to a re-scoring layer (`src/ranker.py`) that applies busin
 ---
 
 ## 🖥️ The NeuralStream Dashboard
-Designed for internal monitoring, this dashboard visualizes the **Inference Pipeline**. It displays the raw Dot-Product scores and a **Min-Max Normalized Confidence Score** for every recommendation.
+Designed for internal monitoring, this dashboard visualizes the **Inference Pipeline**. It displays the raw Dot-Product scores and a **Min-Max Normalized Confidence Score** for every recommendation generated in real-time.
 
 <p align="center">
   <img src="screenshots/neuralstream_main.png" width="850" alt="Dashboard UI">
@@ -43,7 +43,7 @@ Designed for internal monitoring, this dashboard visualizes the **Inference Pipe
   <img src="screenshots/neuralstream_dashboard1.png" width="850" alt="Dashboard UI">
 </p>
 <p align="center">
-  <img src="screenshots/neuralstream_dashbaord2.png" width="850" alt="Dashboard UI">
+  <img src="screenshots/neuralstream_dashboard2.png" width="850" alt="Dashboard UI">
 </p>
 
 ---
@@ -69,7 +69,7 @@ Before engineering the system, I conducted a deep-dive EDA in the **Research Lab
 
 #### 1. The Vector Dimension Paradox
 **Problem:** Encountered persistent `AssertionError` in FAISS during index generation due to shape mismatches between the PyTorch output and the indexing layer.  
-**Resolution:** Engineered an automated **Shape-Detection Interface** in the training pipeline that dynamically aligns PyTorch tensor output with FAISS IndexFlatIP requirements, removing the brittleness of hard-coded dimensions.
+**Resolution:** Engineered an automated **Shape-Detection Interface** in the training pipeline that dynamically aligns PyTorch tensor output with FAISS index requirements, removing the brittleness of hard-coded dimensions.
 
 #### 2. Local Fallback Resilience
 **Problem:** Dependency on external URL calls for dataset ingestion caused latency spikes and pipeline failures during the training phase.  
@@ -94,7 +94,7 @@ Before engineering the system, I conducted a deep-dive EDA in the **Research Lab
 
 ## ⚙️ Execution Guide
 
-** 1. Clone & Setup Environment **
+### 1. Clone & Setup Environment
 
 `git clone https://github.com/Hercodes-ux/Two-Tower-Neural-Retrieval-and-Ranking-System.git`
 
@@ -102,16 +102,15 @@ Before engineering the system, I conducted a deep-dive EDA in the **Research Lab
 
 `pip install -r requirements.txt`
 
-** 2. Trigger the Training & Indexing Pipeline **
+### 2. Trigger the Training & Indexing Pipeline
 
-This generates the .pth model weights and .bin FAISS index in the /data directory
+# This generates the .pth model weights and .bin FAISS index in the /data directory
 
 `python src/train.py`
 
-** 3. Launch the Production API **
+### 3. Launch the Production API
 
 `uvicorn app.main:app --reload`
-
 
 *Developed with focus on Scalability & Latency by Sai Venkata Harshini Rayavarapu
 MS in Computer Science | Cleveland State University | Ex-Accenture*
